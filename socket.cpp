@@ -1,11 +1,11 @@
 #include "socket.h"
-int SenderAddrSize = sizeof(SOCKADDR_IN);
-SOCKADDR_IN CSocket::SenderAddr;
+int SenderAddrSize = sizeof(sockaddr);
+sockaddr CSocket::SenderAddr;
 bool CSocket::tcpconnect(char *address, int port, int mode)
 {
-	SOCKADDR_IN addr;
+	sockaddr addr;
 	LPHOSTENT  hostEntry;
-	if((sockid = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP)) == SOCKET_ERROR)
+	if((sockid = socket(AF_INET,SOCK_STREAM, 0)) == SOCKET_ERROR)
         return false;
 	if((hostEntry = gethostbyname(address))==NULL)
 	{
@@ -16,7 +16,7 @@ bool CSocket::tcpconnect(char *address, int port, int mode)
 	addr.sin_addr = *((LPIN_ADDR)*hostEntry->h_addr_list);
 	addr.sin_port = htons((u_short)port);
 	if(mode ==2)setsync(1);
-	if(connect(sockid, (LPSOCKADDR)&addr, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
+	if(connect(sockid, (LPSOCKADDR)&addr, sizeof(sockaddr)) == SOCKET_ERROR)
 	{
 		if(WSAGetLastError() != WSAEWOULDBLOCK)
 		{
@@ -30,13 +30,13 @@ bool CSocket::tcpconnect(char *address, int port, int mode)
 
 bool CSocket::tcplisten(int port, int max, int mode)
 {
-	if((sockid = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == INVALID_SOCKET) return false;
-	SOCKADDR_IN addr;
+	if((sockid = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) return false;
+	sockaddr addr;
 	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = INADDR_ANY;
 	addr.sin_port = htons(port);
 	if(mode)setsync(1);
-	if(bind(sockid, (LPSOCKADDR)&addr, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
+	if(bind(sockid, (LPSOCKADDR)&addr, sizeof(sockaddr)) == SOCKET_ERROR)
 	{
 		closesocket(sockid);
 		return false;

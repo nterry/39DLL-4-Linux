@@ -12,8 +12,8 @@ class CSocket
 	int receivetext(char*buf, int max);
 public:
 
-	SOCKET sockid;
-	CSocket(SOCKET sock);
+	int sockid;
+	CSocket(int sock);
 	CSocket();
 	~CSocket();
 	bool tcpconnect(char*address, int port, int mode);
