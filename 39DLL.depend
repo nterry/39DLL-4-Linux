@@ -70,13 +70,13 @@
 1178750942 /home/nick/Desktop/39dylibsource/Base Code/39dll/list.h
 	"includes.h"
 
-1341634325 source:/home/nick/.projects/39dll-4-linux/buffer.cpp
+1341717132 source:/home/nick/.projects/39dll-4-linux/buffer.cpp
 	"buffer.h"
 
 1341634325 /home/nick/.projects/39dll-4-linux/buffer.h
 	"includes.h"
 
-1341711307 /home/nick/.projects/39dll-4-linux/includes.h
+1341713845 /home/nick/.projects/39dll-4-linux/includes.h
 	<sys/socket.h>
 	<sys/types.h>
 	<netinet/in.h>
@@ -86,6 +86,7 @@
 	<stdlib.h>
 	<string.h>
 	<iostream>
+	<sys/ioctl.h>
 
 1341634325 source:/home/nick/.projects/39dll-4-linux/list.cpp
 	"list.h"
@@ -100,11 +101,11 @@
 	"buffer.h"
 	"list.h"
 
-1341634325 /home/nick/.projects/39dll-4-linux/tools.h
+1341713363 /home/nick/.projects/39dll-4-linux/tools.h
 	"includes.h"
 	"buffer.h"
 
-1341710259 /home/nick/.projects/39dll-4-linux/socket.h
+1341713388 /home/nick/.projects/39dll-4-linux/socket.h
 	"includes.h"
 	"buffer.h"
 
@@ -112,7 +113,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1341712284 source:/home/nick/.projects/39dll-4-linux/socket.cpp
+1341714200 source:/home/nick/.projects/39dll-4-linux/socket.cpp
 	<netdb.h>
 	"socket.h"
+
+1341716887 source:/home/nick/.projects/39dll-4-linux/tools.cpp
+	"tools.h"
 

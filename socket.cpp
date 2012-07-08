@@ -111,8 +111,7 @@ int CSocket::setsync(int mode)
 {
 	if(sockid < 0)return -1;
 	u_long i = mode;
-	return NULL;
-	//return ioctlsocket(sockid, FIONBIO, &i);
+	return ioctl(sockid, FIONBIO, &i);
 }
 
 bool CSocket::udpconnect(int port, int mode)

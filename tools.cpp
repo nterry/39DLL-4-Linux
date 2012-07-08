@@ -2,16 +2,9 @@
 
 char* CTools::getmacaddress()//http://www.codeguru.com/Cpp/I-N/network/networkinformation/article.php/c5451
 {
+    //This is a NO-OP function. TODO: Figure out how to get the MAC address in Linux
 	static char retval[20];
-	IP_ADAPTER_INFO AdapterInfo[16];
-	DWORD dwBufLen = sizeof(AdapterInfo);
-	DWORD dwStatus = GetAdaptersInfo(AdapterInfo, &dwBufLen);
-	assert(dwStatus == ERROR_SUCCESS);
-	PIP_ADAPTER_INFO pAdapterInfo = AdapterInfo;
-	if(pAdapterInfo)
-	{
-		sprintf(retval, "%02X-%02X-%02X-%02X-%02X-%02X", AdapterInfo->Address[0], AdapterInfo->Address[1],AdapterInfo->Address[2],AdapterInfo->Address[3], AdapterInfo->Address[4], AdapterInfo->Address[5]);
-	} else retval[0]= '\0';
+    sprintf(retval, "%02X-%02X-%02X-%02X-%02X-%02X", "00", "00", "00", "00", "00", "00");
 	return retval;
 }
 
@@ -36,15 +29,14 @@ unsigned int CTools::ip2uint(char *ip)
 
 char* CTools::uint2ip(unsigned int ip)
 {
-	IN_ADDR a;
+	in_addr a;
 	a.s_addr = (u_long)ip;
 	return inet_ntoa(a);
 }
 
 bool CTools::netconnected()
 {
-	DWORD cstat;
-	if(InternetGetConnectedState(&cstat, 0) == FALSE)return false;
+	//Another NO-OP function. TODO: Figure out for Linux.
 	return true;
 }
 
@@ -53,7 +45,7 @@ void CTools::encryptedbuffer(CBuffer *buff, char*key)
 	char *inp = buff->data;
 	unsigned int inplen = buff->count;
 	char KeyBox[257];
-	int keylen = min((int)strlen(key), 256);
+	int keylen = std::min((int)strlen(key), 256);
 	if(keylen <= 0)return;
 	unsigned long i, j, t, x;
 	char temp;
@@ -133,53 +125,4 @@ unsigned int CTools::adler32(CBuffer*buff)
 	return b << 16 | a;
 }
 
-HANDLE CTools::BinOpen(char*filename, int mode)
-{
-	DWORD access;
-	access = GENERIC_READ|GENERIC_WRITE;
-	if(mode == 0) access = GENERIC_READ;
-	if(mode == 1) access = GENERIC_WRITE;
-	return CreateFileA(filename,access, FILE_SHARE_READ,
-  NULL,
-	OPEN_ALWAYS,
-	FILE_ATTRIBUTE_NORMAL,
-	NULL);
-}
-
-bool CTools::BinClose(HANDLE hwnd)
-{
-	 if(CloseHandle(hwnd))return true;
-	 return false;
-}
-
-int CTools::BinWrite(HANDLE hwnd, CBuffer*in)
-{
-	DWORD a;
-	WriteFile(hwnd, in->data + in->readpos, in->count-in->readpos, &a,	NULL);
-	return (int)a;
-}
-int CTools::BinRead(HANDLE hwnd, int size, CBuffer*out)
-{
-	DWORD a;
-	char*b = new char[size];
-	ReadFile(hwnd, b, size, &a, NULL);
-	out->StreamWrite(b, a);
-	delete b;
-	return a;
-}
-
-int CTools::BinGetPos(HANDLE hwnd)
-{
-	return SetFilePointer(hwnd,0,NULL,FILE_CURRENT);
-}
-
-int CTools::BinSetPos(HANDLE hwnd, int offset)
-{
-	return SetFilePointer(hwnd, offset,NULL,FILE_BEGIN);
-}
-
-int CTools::BinFileSize(HANDLE hwnd)
-{
-	return GetFileSize(hwnd, NULL);
-}
 

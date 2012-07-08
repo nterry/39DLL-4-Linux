@@ -2,7 +2,6 @@
 #include "includes.h"
 #include "buffer.h"
 
-
 class CSocket
 {
 	bool udp;

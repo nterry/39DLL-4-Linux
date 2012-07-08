@@ -1,4 +1,5 @@
 #include "buffer.h"
+
 char CBuffer::retval[20001];
 CBuffer::CBuffer()
 {

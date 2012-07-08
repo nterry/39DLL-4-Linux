@@ -1,6 +1,7 @@
 #pragma once
 #include "includes.h"
 #include "buffer.h"
+
 void CalculateMD5(char *, int, char *);
 class CTools
 {
