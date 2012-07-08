@@ -8,7 +8,7 @@ class CSocket
 	bool udp;
 	int format;
 	char formatstr[30];
-	static sockaddr SenderAddr;
+	static sockaddr_in SenderAddr;
 	int receivetext(char*buf, int max);
 public:
 
