@@ -1,0 +1,35 @@
+output_file=39dll-4-linux.so
+
+echo "Cleaning up previous build..."
+rm -rf obj/
+mkdir obj
+if [ ! $? -eq 0 ]; then
+  echo "Failed to clean up environment."
+  exit 1;
+else
+  echo "Cleaned up previous build environment."
+fi
+echo "Building all source files in the current directory"
+for file in $( ls | grep .cpp ); do g++ -fPIC -c -o obj/`echo $file | awk -F. '{ print $1 }'`.o $file; done
+if [ ! $? -eq 0 ]; then
+  echo "Failed to build source files"
+  exit 1;
+else
+  echo "Successfully built source files."
+fi
+echo "Cleaning up previous shared library"
+rm -f $output_file
+if [ ! $? -eq 0 ]; then
+  echo "Failed to remove old library."
+  exit 1;
+else
+  echo "Successfully removed old library."
+fi
+echo "Packaging shared library"
+g++ -shared obj/*.o -o $output_file
+if [ ! $? -eq 0 ]; then
+  echo "Failed to package shared library."
+  exit 1;
+else
+  echo "Successfully packaged shared library. It is located at ./$output_file"
+fi
