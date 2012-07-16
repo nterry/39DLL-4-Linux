@@ -1,4 +1,6 @@
 #include "tools.h"
+#include <algorithm>
+
 
 
 char* CTools::getmacaddress()//http://www.codeguru.com/Cpp/I-N/network/networkinformation/article.php/c5451

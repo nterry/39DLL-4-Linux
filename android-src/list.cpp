@@ -1,4 +1,6 @@
 #include "list.h"
+#include <algorithm>
+
 CList::CList()
 {
 	items = (void**)malloc(5*sizeof(void*));

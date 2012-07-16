@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 obj/
-=======
+libs/
 # Compiled Object files
 *.slo
 *.lo
@@ -13,5 +12,3 @@ obj/
 *.lai
 *.la
 *.a
->>>>>>> 049ad7553f3e493be3155957daa7cb228afd3362
-obj/
