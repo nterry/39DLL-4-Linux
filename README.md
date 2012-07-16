@@ -21,7 +21,7 @@ LINUX:
 
 ANDROID:
 
-1. Make sure the NDK is installed and ndk-build is on your path
+1. Make sure the NDK is installed and ndk-build is on your path. You will also require the Android SDK with its tools and platform  -tools on your path
 2. CD to the project root dir if you are not already there.
 3. Simply execute the following command:
      ndk-build NDK_PROJECT_PATH=. NDK_APPLICATION_MK=Application.mk
