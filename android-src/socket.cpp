@@ -18,7 +18,7 @@ bool CSocket::tcpconnect(char *address, int port, int mode)
 		return false;
 	}
 	addr.sin_family = AF_INET;
-	addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	bcopy ( hostEntry->h_addr, &(addr.sin_addr.s_addr), hostEntry->h_length);
 	addr.sin_port = htons((u_short)port);
 	if(mode ==2)setsync(1);
 	if(connect(sockid, (struct sockaddr*)&addr, sizeof(sockaddr)) == SOCKET_ERROR)
