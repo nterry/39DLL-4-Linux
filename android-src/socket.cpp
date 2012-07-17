@@ -1,6 +1,3 @@
-#include <netdb.h>
-#include <algorithm>
-#include <unistd.h>
 #include "socket.h"
 
 #define INVALID_SOCKET -1

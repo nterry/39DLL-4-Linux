@@ -1,5 +1,6 @@
 #pragma once
 #include "includes.h"
+
 class CList
 {
 	void**items;

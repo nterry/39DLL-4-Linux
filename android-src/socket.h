@@ -1,6 +1,7 @@
 #pragma once
 #include "includes.h"
 #include "buffer.h"
+#include <netdb.h>
 
 class CSocket
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include "includes.h"
+
 class CBuffer
 {
 	static char retval[20001];

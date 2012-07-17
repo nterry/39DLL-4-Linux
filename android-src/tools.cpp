@@ -1,7 +1,4 @@
 #include "tools.h"
-#include <algorithm>
-
-
 
 char* CTools::getmacaddress()//http://www.codeguru.com/Cpp/I-N/network/networkinformation/article.php/c5451
 {
@@ -39,7 +36,7 @@ char* CTools::uint2ip(unsigned int ip)
 
 bool CTools::netconnected()
 {
-	//Another NO-OP function. TODO: Figure out for Linux.
+	//Another NO-OP function. TODO: Figure out for Linux/Android.
 	return true;
 }
 

@@ -1,5 +1,4 @@
 #include "list.h"
-#include <algorithm>
 
 CList::CList()
 {
