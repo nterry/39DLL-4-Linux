@@ -273,7 +273,7 @@ int CSocket::SetFormat(int mode, char* sep)
 
 int CSocket::SockExit(void)
 {
-	//WSACleanup();
+	closesocket(sockid);
 	return 1;
 }
 int CSocket::SockStart(void)
