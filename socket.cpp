@@ -274,7 +274,8 @@ int CSocket::SetFormat(int mode, char* sep)
 
 int CSocket::SockExit(void)
 {
-	closesocket(sockid);
+	//closesocket(sockid);  //TODO: This wont work! sockid is not static and this is a static method. Need to devise
+	                        //a means of closing out the socket system.
 	return 1;
 }
 int CSocket::SockStart(void)
