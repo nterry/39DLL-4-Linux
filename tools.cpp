@@ -3,9 +3,9 @@
 char* CTools::getmacaddress()//http://www.codeguru.com/Cpp/I-N/network/networkinformation/article.php/c5451
 {
     //This is a NO-OP function. TODO: Figure out how to get the MAC address in Linux
-	static char retval[20];
-    sprintf(retval, "%02X-%02X-%02X-%02X-%02X-%02X", "00", "00", "00", "00", "00", "00");
-	return retval;
+	//static char retval[20];
+    //sprintf(retval, "%02X-%02X-%02X-%02X-%02X-%02X", "00", "00", "00", "00", "00", "00");
+	//return retval;
 }
 
 char* CTools::md5buffer(CBuffer *buff)

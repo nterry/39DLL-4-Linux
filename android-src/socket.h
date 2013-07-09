@@ -12,7 +12,7 @@ class CSocket
 	int receivetext(char*buf, int max);
 public:
 
-	int sockid;
+	static int sockid;
 	CSocket(int sock);
 	CSocket();
 	~CSocket();

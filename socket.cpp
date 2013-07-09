@@ -1,5 +1,6 @@
 #include <netdb.h>
 #include "socket.h"
+#include <unistd.h>
 
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR   -1
@@ -7,8 +8,16 @@
 
 int SenderAddrSize = sizeof(sockaddr);
 sockaddr_in CSocket::SenderAddr;
+int CSocket::sockid=0;
 bool CSocket::tcpconnect(char *address, int port, int mode)
 {
+	int SOCKET_TIMEOUT=3;
+	struct timeval tv;
+	tv.tv_sec = SOCKET_TIMEOUT;
+	tv.tv_usec = 0 ;
+	setsockopt (sockid, SOL_SOCKET, SO_SNDTIMEO, (void*)&tv, sizeof tv);
+	setsockopt (sockid, SOL_SOCKET, SO_RCVTIMEO, (void*)&tv, sizeof tv);
+
 	sockaddr_in addr;
 	hostent* hostEntry;
 	if((sockid = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == SOCKET_ERROR)
@@ -24,8 +33,8 @@ bool CSocket::tcpconnect(char *address, int port, int mode)
 	if(mode ==2)setsync(1);
 	if(connect(sockid, (struct sockaddr*)&addr, sizeof(sockaddr)) == SOCKET_ERROR)
 	{
-        closesocket(sockid);
-        return false;
+        	closesocket(sockid);
+        	return false;
 	}
 	if(mode ==1)setsync(1);
 	return true;
@@ -274,8 +283,7 @@ int CSocket::SetFormat(int mode, char* sep)
 
 int CSocket::SockExit(void)
 {
-	//closesocket(sockid);  //TODO: This wont work! sockid is not static and this is a static method. Need to devise
-	                        //a means of closing out the socket system.
+	closesocket(sockid);
 	return 1;
 }
 int CSocket::SockStart(void)
