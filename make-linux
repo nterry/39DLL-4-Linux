@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+
+# Uncomment the following line to get more verbose output
+# set -x
+
 output_file=39dll-4-linux.so
 
 echo "Cleaning up previous build..."
