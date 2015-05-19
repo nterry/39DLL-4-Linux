@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output=".\39DLL.dll" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option output="./39DLL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -18,8 +18,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output=".\39DLL.dll" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="./39DLL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
@@ -34,12 +34,8 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-c -fPIC" />
 		</Compiler>
-		<Linker>
-			<Add library="wsock32" />
-			<Add library="wininet" />
-			<Add library="iphlpapi" />
-		</Linker>
 		<Unit filename="buffer.cpp" />
 		<Unit filename="buffer.h" />
 		<Unit filename="includes.h" />
@@ -53,6 +49,7 @@
 		<Unit filename="tools.h" />
 		<Extensions>
 			<code_completion />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

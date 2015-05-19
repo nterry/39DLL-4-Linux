@@ -65,6 +65,8 @@ extern "C" {
 	__attribute__((visibility("default"))) char* uinttoip(double ip);
 	__attribute__((visibility("default"))) double dllInit();
 
+    __attribute__((visibility("default"))) double createbuffer();
+
     CList buffers;
     CList sockets;
     CList files;
